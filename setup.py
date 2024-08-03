@@ -159,7 +159,16 @@ class cmake_build_ext(build_ext):
             '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}'.format(outdir),
             '-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY={}'.format(self.build_temp),
             '-DVLLM_TARGET_DEVICE={}'.format(VLLM_TARGET_DEVICE),
-            '-DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda'
+        ]
+
+        # fix paths for broken kaggle env...
+        cmake_args += [
+            '-DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda',
+            '-DCUDA_INCLUDE_DIRS=/usr/local/cuda/include',
+            '-DCUDA_NVTOOLSEXT_LIBRARY=/usr/local/cuda/lib64/libnvToolsExt.so',
+            '-DCUDA_CUDART_LIBRARY=/usr/local/cuda/lib64/libcudart.so',
+            '-DCUDA_NVTOOLS_EXT_LIBRARY=/usr/local/cuda/lib64/libnvToolsExt.so',
+            '-DCUDA_NVTOOLSEXT_INCLUDE_DIR=/usr/local/cuda/include',
         ]
 
         verbose = envs.VERBOSE
