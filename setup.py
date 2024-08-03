@@ -159,6 +159,7 @@ class cmake_build_ext(build_ext):
             '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}'.format(outdir),
             '-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY={}'.format(self.build_temp),
             '-DVLLM_TARGET_DEVICE={}'.format(VLLM_TARGET_DEVICE),
+            '-DCUDA_INCLUDE_DIRS=/usr/local/cuda/include'
         ]
 
         verbose = envs.VERBOSE
