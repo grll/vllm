@@ -190,7 +190,7 @@ class cmake_build_ext(build_ext):
             cmake_args += ['-DNVCC_THREADS={}'.format(nvcc_threads)]
 
         if is_ninja_available():
-            build_tool = ['-G', 'Ninja']
+            build_tool = ['-G', 'Ninja', '-DCMAKE_MAKE_PROGRAM=ninja']
             cmake_args += [
                 '-DCMAKE_JOB_POOL_COMPILE:STRING=compile',
                 '-DCMAKE_JOB_POOLS:STRING=compile={}'.format(num_jobs),
