@@ -169,6 +169,10 @@ class cmake_build_ext(build_ext):
             '-DCUDA_CUDART_LIBRARY=/usr/local/cuda/lib64/libcudart.so',
             '-DCUDA_NVTOOLS_EXT_LIBRARY=/usr/local/cuda/lib64/libnvToolsExt.so',
             '-DCUDA_NVTOOLSEXT_INCLUDE_DIR=/usr/local/cuda/include',
+            "-DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda",
+            "-DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc",
+            "-DCMAKE_CUDA_HOST_COMPILER=$(which gcc)",
+            "-DTORCH_CUDA_ARCH_LIST=All"
         ]
 
         verbose = envs.VERBOSE
